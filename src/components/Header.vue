@@ -1,0 +1,32 @@
+<script setup lang="ts">
+import { useFullscreen } from '@vueuse/core';
+import { useSettingsStore } from "~/stores/settings";
+
+const settingsStore = useSettingsStore();
+const { isFullscreen, enter } = useFullscreen();
+</script>
+
+<template>
+    <header v-if="!isFullscreen">
+        <nav class="menu">
+            <ul>
+                <li class="menu-item">
+                    <IconButton icon="nf-fa-plus" />
+                </li>
+                <li class="menu-item">
+                    <IconButton icon="nf-fa-expand" @click="enter" />
+                </li>
+                <li class="menu-item">
+                    <IconButton icon="nf-fa-moon" v-if="settingsStore.isDarkTheme" @click="() => settingsStore.setTheme('light')" />
+                    <IconButton icon="nf-fa-sun" v-else @click="() => settingsStore.setTheme('dark')" />
+                </li>
+                <li class="menu-item">
+                    <IconButton icon="nf-fa-gear" />
+                </li>
+                <li class="menu-item">
+                    <IconButton icon="nf-fa-info" />
+                </li>
+            </ul>
+        </nav>
+    </header>
+</template>
