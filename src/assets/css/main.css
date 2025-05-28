@@ -1,0 +1,171 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #c9833b;
+    --secondary: #4d5096;
+    --tertiary: #615175;
+    --danger: #d9534f;
+    --success: #5cb85c;
+    --warning: #f0ad4e;
+    --info: #5bc0de;
+    --black: #111111;
+    --black-rgb: 17, 17, 17;
+    --white: #f8f9fa;
+    --white-50: #f8f9fa;
+    --white-100: #eceff2;
+    --white-200: #e1e1e1;
+    --white-300: #cccccc;
+    --white-400: #afafaf;
+    --white-500: #949494;
+    --white-600: #7a7a7a;
+    --white-700: #5b5b5d;
+    --white-800: #504f4f;
+    --white-900: #424242;
+    --white-950: #1d1d1e;
+    --white-rgb: 248, 249, 250;
+    --white-fixed: #f8f9fa;
+    --black-fixed: #111111;
+
+    --text-color: var(--black);
+    --background-color: var(--white);
+    --font: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+    --black: #f8f9fa;
+    --black-rgb: 248, 249, 250;
+    --white: #111111;
+}
+
+/* Typography */
+
+body {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-height: 100dvh;
+    font-family: var(--font), sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Utilities */
+
+/* Navigation */
+
+header {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: fit-content;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    width: fit-content;
+    border-radius: 0.5rem;
+    background-color: var(--black-fixed);
+    color: #fff;
+    backdrop-filter: blur(18px);
+}
+
+.menu > ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.menu > ul > li {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Buttons */
+
+.btn {
+    --btn-bg: transparent;
+    --btn-color: var(--white-fixed);
+    --btn-hover-bg: var(--white-fixed);
+    --btn-hover-color: var(--black-fixed);
+    --btn-border: 1px solid var(--white-700);
+    --btn-hover-border: 1px solid var(--white-fixed);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border: var(--btn-border);
+    border-radius: 0.5rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--btn-hover-color);
+    border: var(--btn-hover-border);
+}
+
+.btn:active, .btn:focus {
+    transform: translateY(1px);
+}
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: fit-content;
+}
+
+/* Clock */
+
+.clock {
+    font-size: 10rem;
+}
