@@ -1,59 +1,34 @@
-# Nuxt Minimal Starter
+# Home Clock
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Home Clock is a simple, customizable and minimalistic clock web application built with Nuxt 3.
 
-## Setup
+It can:
+
+- Display the current time in various formats.
+- Display a countdown timer.
+- Display a stopwatch.
+- Schedule alarms.
+
+## Why?
+
+I'm really bad at concentrating on studying. I found a way: setting timers for each tasks with breaks. But an issue came: all clock websites have a bunch of useless bloat, features, ads, and other distractions.
+
+So I decided to build my own clock app that is simple, minimalistic, and distraction-free. It has only the features I need, and nothing more.
+
+You can fullscreen it to cover the entire screen with just the clock, nothing else, helping you focus on your tasks.
+
+## Contributing
 
 Make sure to install dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
 yarn install
-
-# bun
-bun install
 ```
-
-## Development Server
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
 yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -71,5 +46,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
