@@ -4,11 +4,8 @@ import { DateTime } from 'luxon';
 import { getFormatOptions } from '~/utils';
 
 const settingsStore = useSettingsStore();
-
-const currentTime = ref(DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale }));
 </script>
 
 <template>
-    <!-- Index = Clock -->
-    <h1 class="clock">{{ currentTime }}</h1>
+
 </template>

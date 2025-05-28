@@ -11,7 +11,7 @@ It can:
 
 ## Why?
 
-I'm really bad at concentrating on studying. I found a way: setting timers for each tasks with breaks. But an issue came: all clock websites have a bunch of useless bloat, features, ads, and other distractions.
+I'm terrible at concentrating on studying. I found a way: setting timers for each tasks with breaks. But an issue came: all clock websites have a bunch of useless bloat, features, ads, and other distractions.
 
 So I decided to build my own clock app that is simple, minimalistic, and distraction-free. It has only the features I need, and nothing more.
 

@@ -13,11 +13,11 @@ const classes = computed(() => {
 
 <template>
     <button v-if="!to" :class="classes">
-        <i :class="'nf ' + icon"></i>
+        <Icon :icon="icon" />
         <span v-if="label">{{ label }}</span>
     </button>
     <NuxtLink v-else :to="to" :class="classes">
-        <i :class="'nf' + icon"></i>
+        <Icon :icon="icon" />
         <span v-if="label">{{ label }}</span>
     </NuxtLink>
 </template>

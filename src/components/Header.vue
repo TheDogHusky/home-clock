@@ -2,17 +2,22 @@
 import { useFullscreen } from '@vueuse/core';
 import { useSettingsStore } from "~/stores/settings";
 
+const isSettingsPaneActive = ref(false);
+
 const settingsStore = useSettingsStore();
 const { isFullscreen, enter } = useFullscreen();
+
+const toggleSettingsPane = () => {
+    isSettingsPaneActive.value = !isSettingsPaneActive.value;
+};
 </script>
 
 <template>
+    <SettingsPane :active="isSettingsPaneActive" @close="isSettingsPaneActive = false" />
     <header v-if="!isFullscreen">
         <nav class="menu">
             <ul>
-                <li class="menu-item">
-                    <IconButton icon="nf-fa-plus" />
-                </li>
+                <Dropdown />
                 <li class="menu-item">
                     <IconButton icon="nf-fa-expand" @click="enter" />
                 </li>
@@ -21,7 +26,7 @@ const { isFullscreen, enter } = useFullscreen();
                     <IconButton icon="nf-fa-sun" v-else @click="() => settingsStore.setTheme('dark')" />
                 </li>
                 <li class="menu-item">
-                    <IconButton icon="nf-fa-gear" />
+                    <IconButton icon="nf-fa-gear" @click="toggleSettingsPane" />
                 </li>
                 <li class="menu-item">
                     <IconButton icon="nf-fa-info" />
