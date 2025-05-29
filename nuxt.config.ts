@@ -1,3 +1,5 @@
+import pkg from './package.json';
+
 export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     devtools: { enabled: false },
@@ -11,5 +13,10 @@ export default defineNuxtConfig({
         families: [
             { name: 'Source Code Pro', provider: 'google', subsets: ['latin'] },
         ]
+    },
+    runtimeConfig: {
+        public: {
+            version: pkg.version
+        }
     }
 });
