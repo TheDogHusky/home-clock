@@ -8,7 +8,7 @@ function getTime() {
     return DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale });
 }
 
-let timer: number | null = null;
+let timer: number | undefined;
 const currentTime = ref(getTime());
 
 onMounted(() => {
