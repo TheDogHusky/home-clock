@@ -60,7 +60,7 @@ function triggerNewTimer() {
             </form>
         </template>
         <template v-slot:footer>
-            <button class="btn btn-primary" @click="addNewTimer">Create</button>
+            <button class="btn" @click="addNewTimer">Create</button>
             <button class="btn btn-danger" @click="closeNewTimerModal">Cancel</button>
         </template>
     </Modal>

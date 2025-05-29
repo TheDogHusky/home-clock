@@ -7,7 +7,7 @@ const props = defineProps<{
 }>();
 
 const classes = computed(() => {
-    return `btn btn-icon btn-${props.variant || 'primary'}`;
+    return `btn btn-icon ${props.variant ? `btn-${props.variant}` : ''}`;
 });
 </script>
 
