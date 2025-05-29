@@ -22,7 +22,6 @@ const classes = computed(() => {
 });
 
 const settingsPaneActiveLinkClasses = (category: string) => computed(() => {
-    console.log('currentCategory.value', currentCategory.value, 'category', category);
     return {
         'settings-pane-link': true,
         'active': currentCategory.value === category

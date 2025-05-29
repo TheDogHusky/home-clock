@@ -32,6 +32,7 @@ function triggerNewTimer() {
 }
 
 function validateNewTimerInputs() {
+    // TODO optimize this ugly validation code
     if (!newTimerName.value.trim()) {
         newTimerNameInput.value?.classList.add('is-invalid');
         newTimerNameInput.value?.setCustomValidity('Please enter a timer name.');
@@ -40,8 +41,7 @@ function validateNewTimerInputs() {
         newTimerNameInput.value?.setCustomValidity('');
     }
 
-    console.log(newTimerHoursDuration.value, newTimerMinutesDuration.value, newTimerSecondsDuration.value);
-    if (!newTimerHoursDuration.value || isNaN(newTimerHoursDuration.value)) {
+    if (newTimerHoursDuration.value === '' || isNaN(newTimerHoursDuration.value)) {
         newTimerHoursDurationInput.value?.classList.add('is-invalid');
         newTimerHoursDurationInput.value?.setCustomValidity('Please enter a valid number of hours.');
     } else {
@@ -49,7 +49,7 @@ function validateNewTimerInputs() {
         newTimerHoursDurationInput.value?.setCustomValidity('');
     }
 
-    if (!newTimerMinutesDuration.value || isNaN(newTimerMinutesDuration.value)) {
+    if (newTimerMinutesDuration.value === '' || isNaN(newTimerMinutesDuration.value)) {
         newTimerMinutesDurationInput.value?.classList.add('is-invalid');
         newTimerMinutesDurationInput.value?.setCustomValidity('Please enter a valid number of minutes.');
     } else {
@@ -57,7 +57,7 @@ function validateNewTimerInputs() {
         newTimerMinutesDurationInput.value?.setCustomValidity('');
     }
 
-    if (!newTimerSecondsDuration.value || isNaN(newTimerSecondsDuration.value)) {
+    if (newTimerSecondsDuration.value === '' || isNaN(newTimerSecondsDuration.value)) {
         newTimerSecondsDurationInput.value?.classList.add('is-invalid');
         newTimerSecondsDurationInput.value?.setCustomValidity('Please enter a valid number of seconds.');
     } else {
@@ -69,7 +69,7 @@ function validateNewTimerInputs() {
 function addNewTimer() {
     validateNewTimerInputs();
 
-    if (newTimerName.value && newTimerHoursDuration.value && newTimerMinutesDuration.value && newTimerSecondsDuration.value) {
+    if (newTimerName.value && newTimerHoursDuration.value !== '' && newTimerMinutesDuration.value !== '' && newTimerSecondsDuration.value !== '') {
         timersStore.addTimer({
             name: newTimerName.value,
             duration: (parseInt(newTimerHoursDuration.value, 10) * 3600) +
