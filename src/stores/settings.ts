@@ -12,6 +12,12 @@ export const useSettingsStore = defineStore('settings', {
         clockFontStyle: 'normal' as 'normal' | 'italic', // Default clock font style
         clockFontColor: '#ffffff', // Default clock font color
         backgroundColor: 'var(--background-color)', // Default background color
+        showClockInTimers: true, // Show clock in the timers page alongside the timers
+        showClockInStopwatch: true, // Show clock in the stopwatch page alongside the stopwatch
+        showClockInAlarms: true, // Show clock in the alarms page alongside the alarms
+        showTimersControlOnFullscreen: true, // Show timers control on fullscreen
+        showStopwatchControlOnFullscreen: true, // Show stopwatch control on fullscreen
+        showAlarmsControlOnFullscreen: true, // Show alarms control on fullscreen
     }),
     actions: {
         setTheme(newTheme: string) {

@@ -9,8 +9,18 @@ const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
 
+const newTimerActive = ref(false);
+const newTimerName = ref('');
+const newTimerDuration = ref('');
+
+const closeNewTimerModal = () => {
+    newTimerActive.value = false;
+    newTimerName.value = '';
+    newTimerDuration.value = '';
+};
+
 function triggerNewTimer() {
-    console.log('New timer triggered');
+    newTimerActive.value = true;
 }
 </script>
 
@@ -39,4 +49,19 @@ function triggerNewTimer() {
             <i class="nf nf-fa-plus"></i>
         </button>
     </div>
+    <Modal v-if="newTimerActive" @close="closeNewTimerModal">
+        <template v-slot:header>
+            <h2>New Timer</h2>
+        </template>
+        <template v-slot:content>
+            <form @submit.prevent="">
+                <input v-model="newTimerName" type="text" placeholder="Timer Name" required />
+                <input v-model="newTimerDuration" type="number" placeholder="Duration (seconds)" required />
+            </form>
+        </template>
+        <template v-slot:footer>
+            <button class="btn btn-primary" @click="addNewTimer">Create</button>
+            <button class="btn btn-danger" @click="closeNewTimerModal">Cancel</button>
+        </template>
+    </Modal>
 </template>
