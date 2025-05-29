@@ -675,3 +675,67 @@ footer {
     background-color: var(--white-fixed);
     border: 1px solid var(--black-400);
 }
+
+/* Forms */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--white-100);
+    border-radius: 0.25rem;
+    background-color: transparent;
+    color: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+form input[type="checkbox"], form input[type="radio"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+form input[type="checkbox"] + label, form input[type="radio"] + label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+form *.is-invalid {
+    border-color: var(--danger);
+}
+
+.timer-duration {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.timer-duration span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.timer-duration span:not(:first-child):before {
+    content: ":";
+    margin-right: .5rem;
+}
