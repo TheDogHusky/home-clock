@@ -4,11 +4,24 @@ import { DateTime } from 'luxon';
 import { getFormatOptions } from '~/utils';
 
 const settingsStore = useSettingsStore();
+function getTime() {
+    return DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale });
+}
 
-const currentTime = ref(DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale }));
+let timer: number | null = null;
+const currentTime = ref(getTime());
+
+onMounted(() => {
+    timer = window.setInterval(() => {
+        currentTime.value = getTime();
+    }, 1000);
+});
+
+onUnmounted(() => {
+    clearInterval(timer);
+});
 </script>
 
 <template>
-    <!-- Index = Clock -->
     <h1 class="clock">{{ currentTime }}</h1>
 </template>
