@@ -9,6 +9,7 @@ const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
 
+// Initialize the values for the new timer modal
 const newTimerActive = ref(false);
 const newTimerName = ref('');
 const newTimerHoursDuration = ref('');
@@ -19,6 +20,7 @@ const newTimerHoursDurationInput = useTemplateRef<HTMLInputElement>('newTimerHou
 const newTimerMinutesDurationInput = useTemplateRef<HTMLInputElement>('newTimerMinutesDurationInput');
 const newTimerSecondsDurationInput = useTemplateRef<HTMLInputElement>('newTimerSecondsDurationInput');
 
+// Function to close the new timer modal and reset the input fields
 const closeNewTimerModal = () => {
     newTimerActive.value = false;
     newTimerName.value = '';
@@ -27,12 +29,15 @@ const closeNewTimerModal = () => {
     newTimerSecondsDuration.value = '';
 };
 
+// Function to trigger the new timer modal
 function triggerNewTimer() {
     newTimerActive.value = true;
 }
 
+// Function to validate the inputs for the new timer
 function validateNewTimerInputs() {
     // TODO optimize this ugly validation code
+    // Check if the new timer name is valid
     if (!newTimerName.value.trim()) {
         newTimerNameInput.value?.classList.add('is-invalid');
         newTimerNameInput.value?.setCustomValidity('Please enter a timer name.');
@@ -41,6 +46,7 @@ function validateNewTimerInputs() {
         newTimerNameInput.value?.setCustomValidity('');
     }
 
+    // Check if the duration inputs are valid numbers
     if (newTimerHoursDuration.value === '' || isNaN(newTimerHoursDuration.value)) {
         newTimerHoursDurationInput.value?.classList.add('is-invalid');
         newTimerHoursDurationInput.value?.setCustomValidity('Please enter a valid number of hours.');
@@ -66,16 +72,21 @@ function validateNewTimerInputs() {
     }
 }
 
+// Function to add a new timer
 function addNewTimer() {
+    // Validate the inputs before adding the timer
     validateNewTimerInputs();
 
+    // If all inputs are valid, add the timer
     if (newTimerName.value && newTimerHoursDuration.value !== '' && newTimerMinutesDuration.value !== '' && newTimerSecondsDuration.value !== '') {
         timersStore.addTimer({
             name: newTimerName.value,
+            // Concatenate the durations in seconds
             duration: (parseInt(newTimerHoursDuration.value, 10) * 3600) +
                 (parseInt(newTimerMinutesDuration.value, 10) * 60) +
                 parseInt(newTimerSecondsDuration.value, 10),
         });
+        // Reset the input fields after adding the timer
         closeNewTimerModal();
     }
 }
@@ -84,6 +95,7 @@ function addNewTimer() {
 <template>
     <h1 class="clock">{{ DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale }) }}</h1>
     <ul class="timers">
+        <!-- TODO: Format this correctly -->
         <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
             <span class="timer-name">{{ timer.name }}</span>
             <span class="timer-time"></span>
