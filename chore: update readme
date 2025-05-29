@@ -30,19 +30,3 @@ Start the development server on `http://localhost:3000`:
 ```bash
 yarn dev
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
