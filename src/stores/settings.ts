@@ -10,7 +10,7 @@ export const useSettingsStore = defineStore('settings', {
             fontSize: 85, // Default clock font size
             fontWeight: 600 as number, // Default clock font weight
             fontStyle: 'normal' as 'normal' | 'italic', // Default clock font style
-            showSeconds: true, // Show seconds in the clock
+            showSeconds: false, // Show seconds in the clock
             customLuxonFormat: '' // Custom Luxon format for the clock
         },
         appearance: { // Appearance settings

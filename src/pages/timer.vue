@@ -4,10 +4,12 @@ import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
 import { DateTime } from 'luxon';
 import { getFormatOptions } from '~/utils';
+import { useClock } from '~/composables/clock';
 
 const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
+const { formattedDate } = useClock(settingsStore);
 
 // Initialize the values for the new timer modal
 const newTimerActive = ref(false);
@@ -93,24 +95,28 @@ function addNewTimer() {
 </script>
 
 <template>
-    <h1 class="clock">{{ DateTime.now().toLocaleString(getFormatOptions(settingsStore.clockFormat), { locale: settingsStore.locale }) }}</h1>
+    <h1 class="clock">{{ formattedDate }}</h1>
     <ul class="timers">
         <!-- TODO: Format this correctly -->
         <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
-            <span class="timer-name">{{ timer.name }}</span>
-            <span class="timer-time"></span>
-            <button class="btn btn-icon" @click="">
-                <i class="nf nf-fa-play"></i>
-            </button>
-            <button class="btn btn-icon" @click="">
-                <i class="nf nf-fa-pause"></i>
-            </button>
-            <button class="btn btn-icon" @click="">
-                <i class="nf nf-fa-undo"></i>
-            </button>
-            <button class="btn btn-icon" @click="timersStore.removeTimer(timer.id)">
-                <i class="nf nf-fa-trash"></i>
-            </button>
+            <div class="timer-headers">
+                <span class="timer-name">{{ timer.name }}</span>
+                <span class="timer-time">{{ timersStore.watchTimer(timer.id).remaining }}</span>
+            </div>
+            <div class="timer-controls" v-if="!isFullscreen">
+                <button class="btn btn-icon" @click="">
+                    <i class="nf nf-fa-play"></i>
+                </button>
+                <button class="btn btn-icon" @click="">
+                    <i class="nf nf-fa-pause"></i>
+                </button>
+                <button class="btn btn-icon" @click="">
+                    <i class="nf nf-fa-undo"></i>
+                </button>
+                <button class="btn btn-icon" @click="timersStore.removeTimer(timer.id)">
+                    <i class="nf nf-fa-trash"></i>
+                </button>
+            </div>
         </li>
     </ul>
     <div v-if="!isFullscreen">
