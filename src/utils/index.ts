@@ -64,3 +64,17 @@ export const formatDate = (date: DateTime, settings: SettingsStore): string => {
     // Use Luxon's toLocaleString method to format the date
     return date.toLocaleString(formatOptions);
 };
+
+/**
+ * Calculates the remaining time and elapsed time for a timer based on its start time and duration.
+ * @param startTime - The timestamp when the timer started (in milliseconds).
+ * @param duration - The total duration of the timer (in seconds).
+ * @return An object containing the remaining time and elapsed time in seconds.
+ */
+export const getTimerTime = (startTime: number, duration: number): number => {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    return {
+        remaining: Math.max(0, duration - elapsed),
+        elapsed
+    };
+};

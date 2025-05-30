@@ -2,14 +2,10 @@
 import { useSettingsStore } from '~/stores/settings';
 import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
-import { DateTime } from 'luxon';
-import { getFormatOptions } from '~/utils';
-import { useClock } from '~/composables/clock';
 
 const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
-const { formattedDate } = useClock(settingsStore);
 
 // Initialize the values for the new timer modal
 const newTimerActive = ref(false);
@@ -81,43 +77,68 @@ function addNewTimer() {
 
     // If all inputs are valid, add the timer
     if (newTimerName.value && newTimerHoursDuration.value !== '' && newTimerMinutesDuration.value !== '' && newTimerSecondsDuration.value !== '') {
-        timersStore.addTimer({
-            name: newTimerName.value,
+        timersStore.addTimer(
+            newTimerName.value,
             // Concatenate the durations in seconds
-            duration: (parseInt(newTimerHoursDuration.value, 10) * 3600) +
+            (parseInt(newTimerHoursDuration.value, 10) * 3600) +
                 (parseInt(newTimerMinutesDuration.value, 10) * 60) +
                 parseInt(newTimerSecondsDuration.value, 10),
-        });
+        );
         // Reset the input fields after adding the timer
         closeNewTimerModal();
     }
 }
+
+// This is dumb and probably not the best way to do this, but it works for now, and I haven't found any other solution to update the timers every second
+const now = ref(Date.now());
+let timerInterval: number;
+
+onMounted(() => {
+    timerInterval = window.setInterval(() => {
+        now.value = Date.now();
+    }, 1000);
+});
+
+onUnmounted(() => {
+    clearInterval(timerInterval);
+});
+
+const timersRemaining = computed(() => {
+    // Using now.value to ensure the timers are updated every second
+    now.value;
+    return timersStore.timers.reduce((acc, timer) => {
+        acc[timer.id] = timersStore.watchTimer(timer.id).remaining;
+        return acc;
+    }, {} as Record<string, number>);
+});
 </script>
 
 <template>
-    <h1 class="clock">{{ formattedDate }}</h1>
+    <Clock />
     <ul class="timers">
         <!-- TODO: Format this correctly -->
-        <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
-            <div class="timer-headers">
-                <span class="timer-name">{{ timer.name }}</span>
-                <span class="timer-time">{{ timersStore.watchTimer(timer.id).remaining }}</span>
-            </div>
-            <div class="timer-controls" v-if="!isFullscreen">
-                <button class="btn btn-icon" @click="">
-                    <i class="nf nf-fa-play"></i>
-                </button>
-                <button class="btn btn-icon" @click="">
-                    <i class="nf nf-fa-pause"></i>
-                </button>
-                <button class="btn btn-icon" @click="">
-                    <i class="nf nf-fa-undo"></i>
-                </button>
-                <button class="btn btn-icon" @click="timersStore.removeTimer(timer.id)">
-                    <i class="nf nf-fa-trash"></i>
-                </button>
-            </div>
-        </li>
+        <ClientOnly>
+            <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
+                <div class="timer-headers">
+                    <span class="timer-name">{{ timer.name }}</span>
+                    <span class="timer-time">{{ timersRemaining[timer.id] }}</span>
+                </div>
+                <div class="timer-controls" v-if="!isFullscreen">
+                    <button class="btn btn-icon" @click="">
+                        <i class="nf nf-fa-play"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="">
+                        <i class="nf nf-fa-pause"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="">
+                        <i class="nf nf-fa-undo"></i>
+                    </button>
+                    <button class="btn btn-icon" @click="timersStore.removeTimer(timer.id)">
+                        <i class="nf nf-fa-trash"></i>
+                    </button>
+                </div>
+            </li>
+        </ClientOnly>
     </ul>
     <div v-if="!isFullscreen">
         <button class="btn btn-icon" @click="triggerNewTimer">

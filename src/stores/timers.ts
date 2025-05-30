@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { getTimerTime } from '~/utils';
 
 export const useTimersStore = defineStore('timers', {
     state: () => ({
@@ -36,11 +37,9 @@ export const useTimersStore = defineStore('timers', {
         watchTimer(id: string) {
             const timer = this.timers.find(timer => timer.id === id);
             if (timer) {
-                const elapsed = Math.floor((Date.now() - timer.startTime) / 1000);
                 return {
                     ...timer,
-                    elapsed,
-                    remaining: timer.duration - elapsed
+                    ...getTimerTime(timer.startTime, timer.duration)
                 };
             }
             return null;

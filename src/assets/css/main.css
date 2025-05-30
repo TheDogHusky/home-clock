@@ -755,3 +755,23 @@ form input[type="checkbox"] + label, form input[type="radio"] + label {
     border: 1px solid var(--black-400);
     color: var(--black-fixed);
 }
+
+/* Loading indicator */
+
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-color: var(--white);
+}
+
+.loading-indicator.is-loading {
+    visibility: visible;
+}

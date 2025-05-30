@@ -17,7 +17,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <NuxtLoadingIndicator color="linear-gradient(to right, var(--primary), var(--secondary)" />
     <Header />
     <NuxtPage />
     <Footer />
