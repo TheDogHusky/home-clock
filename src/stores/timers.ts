@@ -43,6 +43,13 @@ export const useTimersStore = defineStore('timers', {
                 };
             }
             return null;
+        },
+        resetTimer(id: string) {
+            const timer = this.timers.find(timer => timer.id === id);
+            if (timer) {
+                timer.startTime = Date.now();
+                timer.isActive = true;
+            }
         }
     },
     persist: true

@@ -2,6 +2,7 @@
 import { useSettingsStore } from '~/stores/settings';
 import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
+import type { Timer } from '~/types';
 
 const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
@@ -108,9 +109,18 @@ const timersRemaining = computed(() => {
     now.value;
     return timersStore.timers.reduce((acc, timer) => {
         acc[timer.id] = timersStore.watchTimer(timer.id).remaining;
+        if (acc[timer.id] <= 0 && timer.isActive) { // If the timer has finished, alert the user
+            triggerAlert(timer);
+        }
         return acc;
     }, {} as Record<string, number>);
 });
+
+// Function to trigger an alert when a timer finishes. Will later on be replaced with a more sophisticated notification system, with sound and everything
+function triggerAlert(timer: Timer) {
+    alert(`Timer "${timer.name}" has finished!`);
+    timersStore.removeTimer(timer.id); // Stop the timer after alerting
+}
 </script>
 
 <template>
@@ -124,13 +134,14 @@ const timersRemaining = computed(() => {
                     <span class="timer-time">{{ timersRemaining[timer.id] }}</span>
                 </div>
                 <div class="timer-controls" v-if="!isFullscreen">
-                    <button class="btn btn-icon" @click="">
+                    <!-- Add timer controls logic -->
+                    <!--<button class="btn btn-icon" @click="">
                         <i class="nf nf-fa-play"></i>
                     </button>
                     <button class="btn btn-icon" @click="">
                         <i class="nf nf-fa-pause"></i>
-                    </button>
-                    <button class="btn btn-icon" @click="">
+                    </button>-->
+                    <button class="btn btn-icon" @click="timersStore.resetTimer(timer.id)">
                         <i class="nf nf-fa-undo"></i>
                     </button>
                     <button class="btn btn-icon" @click="timersStore.removeTimer(timer.id)">

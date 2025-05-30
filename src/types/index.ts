@@ -37,3 +37,11 @@ export interface SettingsStore {
         showAlarmsControlOnFullscreen: boolean;
     };
 }
+
+export interface Timer {
+    id: string;
+    name: string;
+    duration: number; // in seconds
+    startTime: number; // timestamp when the timer started
+    isActive: boolean; // whether the timer is currently running
+}
