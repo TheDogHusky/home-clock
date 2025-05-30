@@ -66,12 +66,26 @@ export const formatDate = (date: DateTime, settings: SettingsStore): string => {
 };
 
 /**
+ * Formats a duration in seconds into a string in the format HH:MM:SS.
+ * @param duration - The duration in seconds to format.
+ * @return A string representing the formatted duration.
+ */
+export const formatDuration = (duration: number): string => {
+    const hours = Math.floor(duration / 3600);
+    const minutes = Math.floor((duration % 3600) / 60);
+    const seconds = duration % 60;
+
+    // Format the duration as HH:MM:SS
+    return `${hours ? (String(hours).padStart(2, '0') + ':') : ''}${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+/**
  * Calculates the remaining time and elapsed time for a timer based on its start time and duration.
  * @param startTime - The timestamp when the timer started (in milliseconds).
  * @param duration - The total duration of the timer (in seconds).
  * @return An object containing the remaining time and elapsed time in seconds.
  */
-export const getTimerTime = (startTime: number, duration: number): number => {
+export const getTimerTime = (startTime: number, duration: number): { remaining: number; elapsed: number } => {
     const elapsed = Math.floor((Date.now() - startTime) / 1000);
     return {
         remaining: Math.max(0, duration - elapsed),

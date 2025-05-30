@@ -3,6 +3,7 @@ import { useSettingsStore } from '~/stores/settings';
 import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
 import type { Timer } from '~/types';
+import { formatDuration } from "~/utils";
 
 const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
@@ -131,7 +132,7 @@ function triggerAlert(timer: Timer) {
             <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
                 <div class="timer-headers">
                     <span class="timer-name">{{ timer.name }}</span>
-                    <span class="timer-time">{{ timersRemaining[timer.id] }}</span>
+                    <span class="timer-time">{{ formatDuration(timersRemaining[timer.id]) }}</span>
                 </div>
                 <div class="timer-controls" v-if="!isFullscreen">
                     <!-- Add timer controls logic -->

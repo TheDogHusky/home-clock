@@ -756,22 +756,37 @@ form input[type="checkbox"] + label, form input[type="radio"] + label {
     color: var(--black-fixed);
 }
 
-/* Loading indicator */
+/* Timers */
 
-.loading-indicator {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.timer {
     display: flex;
-    visibility: hidden;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    background-color: var(--white);
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.loading-indicator.is-loading {
-    visibility: visible;
+.timer-headers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.timer-name {
+    font-size: 1.5rem;
+}
+
+.timer-time {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-top: -.25rem;
+}
+
+.timer-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
 }
