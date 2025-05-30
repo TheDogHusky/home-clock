@@ -9,6 +9,8 @@ It can:
 - Display a stopwatch.
 - Schedule alarms.
 
+Yes, it is overengineered for a clock app, but it is built with the intention of being fully customizable.
+
 ## Why?
 
 I'm terrible at concentrating on studying. I found a way: setting timers for each tasks with breaks. But an issue came: all clock websites have a bunch of useless bloat, features, ads, and other distractions.
