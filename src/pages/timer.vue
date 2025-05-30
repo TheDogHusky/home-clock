@@ -127,7 +127,6 @@ function triggerAlert(timer: Timer) {
 <template>
     <Clock />
     <ul class="timers">
-        <!-- TODO: Format this correctly -->
         <ClientOnly>
             <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
                 <div class="timer-headers">
