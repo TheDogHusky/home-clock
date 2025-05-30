@@ -12,3 +12,28 @@ export type ClockFormat =
     | string;
 
 export type Theme = 'dark' | 'light' | string;
+
+export interface SettingsStore {
+    theme: Theme;
+    clock: {
+        format: ClockFormat;
+        font: string;
+        fontSize: number;
+        fontWeight: number;
+        fontStyle: 'normal' | 'italic';
+        showSeconds: boolean;
+        customLuxonFormat: string;
+    };
+    appearance: {
+        backgroundColor: string;
+        clockFontColor: string;
+    };
+    distractions: {
+        showClockInTimers: boolean;
+        showClockInStopwatch: boolean;
+        showClockInAlarms: boolean;
+        showTimersControlOnFullscreen: boolean;
+        showStopwatchControlOnFullscreen: boolean;
+        showAlarmsControlOnFullscreen: boolean;
+    };
+}

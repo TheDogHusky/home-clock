@@ -1,23 +1,31 @@
 import { defineStore } from 'pinia';
-import type { ClockFormat, Theme } from '~/types';
+import type { Theme } from '~/types';
 
 export const useSettingsStore = defineStore('settings', {
     state: () => ({
         theme: 'dark' as Theme, // Default theme
-        clockFormat: 'TIME_SIMPLE' as ClockFormat, // Default clock format
-        locale: 'en-US', // Default locale
-        clockFont: 'Source Code Pro', // Default clock font
-        clockFontSize: 85, // Default clock font size
-        clockFontWeight: 'normal' as 'normal' | 'bold', // Default clock font weight
-        clockFontStyle: 'normal' as 'normal' | 'italic', // Default clock font style
-        clockFontColor: '#ffffff', // Default clock font color
-        backgroundColor: 'var(--background-color)', // Default background color
-        showClockInTimers: true, // Show clock in the timers page alongside the timers
-        showClockInStopwatch: true, // Show clock in the stopwatch page alongside the stopwatch
-        showClockInAlarms: true, // Show clock in the alarms page alongside the alarms
-        showTimersControlOnFullscreen: true, // Show timers control on fullscreen
-        showStopwatchControlOnFullscreen: true, // Show stopwatch control on fullscreen
-        showAlarmsControlOnFullscreen: true, // Show alarms control on fullscreen
+        clock: { // Clock settings
+            format: '24-hour' as '12-hour' | '24-hour', // Default clock format
+            font: 'Source Code Pro', // Default clock font
+            fontSize: 85, // Default clock font size
+            fontWeight: 600 as number, // Default clock font weight
+            fontStyle: 'normal' as 'normal' | 'italic', // Default clock font style
+            showSeconds: true, // Show seconds in the clock
+            customLuxonFormat: '' // Custom Luxon format for the clock
+        },
+        appearance: { // Appearance settings
+            backgroundColor: 'var(--background-color)', // Default background color
+            clockFontColor: '', // Default clock font color
+        },
+        distractions: {
+            showClockInTimers: true, // Show clock in the timers page
+            showClockInStopwatch: true, // Show clock in the stopwatch page
+            showClockInAlarms: true, // Show clock in the alarms page
+            showTimersControlOnFullscreen: true, // Show the timers controls when the app is in fullscreen mode
+            showStopwatchControlOnFullscreen: true, // Show the stopwatch controls when the app is in fullscreen mode
+            showAlarmsControlOnFullscreen: true, // Show the alarms controls when the app is in fullscreen mode
+            showDate: true, // Show date in all pages on top of the clock
+        }, // Distractions settings
     }),
     actions: {
         setTheme(newTheme: string) {
