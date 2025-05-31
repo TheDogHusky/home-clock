@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     fonts: {
         families: [
             { name: 'Source Code Pro', provider: 'google', subsets: ['latin'] },
+            {
+                name: 'NerdFontsSymbols Nerd Font',
+                provider: 'local',
+                preload: true,
+                styles: ['normal']
+            }
         ]
     },
     runtimeConfig: {
