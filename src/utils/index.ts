@@ -80,6 +80,22 @@ export const formatDuration = (duration: number): string => {
 }
 
 /**
+ * Formats a stopwatch time in milliseconds into a string in the format HH:MM:SS:MS where HH appears only if it is greater than 0.
+ * @param time - The time in milliseconds to format.
+ * @return A string representing the formatted stopwatch time.
+ */
+export const formatStopwatchTime = (time: number): string => {
+    const totalSeconds = Math.floor(time / 1000);
+    const milliseconds = Math.floor((time % 1000) / 10); // Convert milliseconds to centiseconds
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    // Format the time as HH:MM:SS:MS, where HH appears only if it is greater than 0
+    return `${hours > 0 ? String(hours).padStart(2, '0') + ':' : ''}${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+}
+
+/**
  * Calculates the remaining time and elapsed time for a timer based on its start time and duration.
  * @param startTime - The timestamp when the timer started (in milliseconds).
  * @param duration - The total duration of the timer (in seconds).
