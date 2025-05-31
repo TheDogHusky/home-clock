@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useSettingsStore } from '~/stores/settings';
 import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
 import type { Timer } from '~/types';
 import { formatDuration } from "~/utils";
 
-const settingsStore = useSettingsStore();
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
 
@@ -47,7 +45,7 @@ function validateNewTimerInputs() {
     }
 
     // Check if the duration inputs are valid numbers
-    if (newTimerHoursDuration.value === '' || isNaN(newTimerHoursDuration.value)) {
+    if (newTimerHoursDuration.value === '' || isNaN(parseInt(newTimerHoursDuration.value, 10))) {
         newTimerHoursDurationInput.value?.classList.add('is-invalid');
         newTimerHoursDurationInput.value?.setCustomValidity('Please enter a valid number of hours.');
     } else {
@@ -55,7 +53,7 @@ function validateNewTimerInputs() {
         newTimerHoursDurationInput.value?.setCustomValidity('');
     }
 
-    if (newTimerMinutesDuration.value === '' || isNaN(newTimerMinutesDuration.value)) {
+    if (newTimerMinutesDuration.value === '' || isNaN(parseInt(newTimerMinutesDuration.value, 10))) {
         newTimerMinutesDurationInput.value?.classList.add('is-invalid');
         newTimerMinutesDurationInput.value?.setCustomValidity('Please enter a valid number of minutes.');
     } else {
@@ -63,7 +61,7 @@ function validateNewTimerInputs() {
         newTimerMinutesDurationInput.value?.setCustomValidity('');
     }
 
-    if (newTimerSecondsDuration.value === '' || isNaN(newTimerSecondsDuration.value)) {
+    if (newTimerSecondsDuration.value === '' || isNaN(parseInt(newTimerSecondsDuration.value, 10))) {
         newTimerSecondsDurationInput.value?.classList.add('is-invalid');
         newTimerSecondsDurationInput.value?.setCustomValidity('Please enter a valid number of seconds.');
     } else {
@@ -109,7 +107,7 @@ const timersRemaining = computed(() => {
     // Using now.value to ensure the timers are updated every second
     now.value;
     return timersStore.timers.reduce((acc, timer) => {
-        acc[timer.id] = timersStore.watchTimer(timer.id).remaining;
+        acc[timer.id] = timersStore.watchTimer(timer.id)?.remaining || 0; // Get the remaining time for each timer
         if (acc[timer.id] <= 0 && timer.isActive) { // If the timer has finished, alert the user
             triggerAlert(timer);
         }

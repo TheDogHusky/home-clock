@@ -1,15 +1,10 @@
 import { defineStore } from 'pinia';
 import { getTimerTime } from '~/utils';
+import type { TimerStoreActions, TimerStoreGetters, TimerStoreStates } from '~/types';
 
-export const useTimersStore = defineStore('timers', {
+export const useTimersStore = defineStore<'timers', TimerStoreStates, TimerStoreGetters, TimerStoreActions>('timers', {
     state: () => ({
-        timers: [] as Array<{
-            id: string;
-            name: string;
-            duration: number; // in seconds
-            startTime: number; // timestamp when the timer started
-            isActive: boolean; // whether the timer is currently running
-        }>
+        timers: []
     }),
     actions: {
         addTimer(name: string, duration: number) {
