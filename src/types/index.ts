@@ -16,7 +16,7 @@ export type ClockFormat =
     | 'DATETIME_FULL_WITH_SECONDS' // Long date and time format with seconds
     | string;
 
-export type Theme = 'dark' | 'light' | string;
+export type Theme = 'dark' | 'light' | 'system' | string;
 
 // SettingsStore definitions
 

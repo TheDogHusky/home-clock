@@ -3,7 +3,7 @@ import type { SettingsStoreActions, SettingsStoreGetters, SettingsStoreStates } 
 
 export const useSettingsStore = defineStore<"settings", SettingsStoreStates, SettingsStoreGetters, SettingsStoreActions>('settings', {
     state: () => ({
-        theme: 'dark',
+        theme: 'system',
         clock: {
             format: '24-hour',
             font: 'Source Code Pro',
