@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useSettingsStore } from "~/stores/settings";
-import type { DebuggerEvent } from "vue";
 
 const settingsStore = useSettingsStore();
 // Set the body theme based on the settings automatically
