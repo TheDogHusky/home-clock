@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useFullscreen } from '@vueuse/core';
-import { useSettingsStore } from "~/stores/settings";
+import { useSettingsStore } from '~/stores/settings';
+import { isMobile } from 'mobile-device-detect';
 
 const isSettingsPaneActive = ref(false);
 const isAboutPaneActive = ref(false);
@@ -24,9 +25,11 @@ const toggleAboutPane = () => {
         <nav class="menu">
             <ul>
                 <Dropdown />
-                <li class="menu-item">
-                    <IconButton icon="nf-fa-expand" @click="enter" />
-                </li>
+                <ClientOnly>
+                    <li class="menu-item" v-if="!isMobile">
+                        <IconButton icon="nf-fa-expand" @click="enter" />
+                    </li>
+                </ClientOnly>
                 <li class="menu-item">
                     <IconButton icon="nf-fa-moon" v-if="settingsStore.isDarkTheme" @click="() => settingsStore.setTheme('light')" />
                     <IconButton icon="nf-fa-sun" v-else @click="() => settingsStore.setTheme('dark')" />

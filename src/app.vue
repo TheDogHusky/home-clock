@@ -24,6 +24,8 @@ onMounted(() => {
 
 <template>
     <Header />
-    <NuxtPage />
+    <div class="content">
+        <NuxtPage />
+    </div>
     <Footer />
 </template>

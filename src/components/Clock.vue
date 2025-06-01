@@ -8,9 +8,14 @@ const { formattedDate } = useClock(settingsStore);
 
 <template>
     <!-- Ensure the clock is only on client side, otherwise it will cause hydration mismatches with the seconds enabled -->
-    <ClientOnly tag="h1" fallback="Loading..." class="clock">
+    <ClientOnly>
         <h1 class="clock">
             {{ formattedDate }}
         </h1>
+        <template #fallback>
+            <h1 class="clock">
+                {{ new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) }}
+            </h1>
+        </template>
     </ClientOnly>
 </template>
