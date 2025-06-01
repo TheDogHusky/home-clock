@@ -38,6 +38,10 @@ function updateStopwatch() {
 onUnmounted(() => {
     stopStopwatch();
 });
+
+useHead({
+    title: "Stopwatch"
+});
 </script>
 
 <template>

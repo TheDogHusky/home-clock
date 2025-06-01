@@ -120,6 +120,10 @@ function triggerAlert(timer: Timer) {
     alert(`Timer "${timer.name}" has finished!`);
     timersStore.removeTimer(timer.id); // Stop the timer after alerting
 }
+
+useHead({
+    title: "Timers"
+});
 </script>
 
 <template>
