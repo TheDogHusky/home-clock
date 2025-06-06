@@ -3,6 +3,9 @@ import { useTimersStore } from '~/stores/timers';
 import { useFullscreen } from '@vueuse/core';
 import type { Timer } from '~/types';
 import { formatDuration } from "~/utils";
+import { useAlert } from '~/composables/alerts';
+
+const showAlert = useAlert();
 
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
@@ -109,7 +112,11 @@ const timersRemaining = computed(() => {
 
 // Function to trigger an alert when a timer finishes. Will later on be replaced with a more sophisticated notification system, with sound and everything
 function triggerAlert(timer: Timer) {
-    alert(`Timer "${timer.name}" has finished!`);
+    showAlert({
+        title: 'Timer Finished',
+        message: `The timer "${timer.name}" has finished!`,
+        type: 'info'
+    });
     timersStore.removeTimer(timer.id); // Stop the timer after alerting
 }
 
