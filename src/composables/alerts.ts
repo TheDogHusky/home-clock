@@ -1,11 +1,31 @@
-import { getCurrentInstance } from 'vue';
+import type { AlertProps, AlertInstance } from '@/types';
+
+export function useAlertsState() {
+    return useState<AlertInstance[]>('alerts', () => [])
+}
+
+let idCounter = 0;
+const resolvers = new Map<number, (value: string) => void>();
 
 export const useAlert = () => {
-    const vm = getCurrentInstance();
-    const app = vm?.appContext.app;
-    const alertManager = app?.config.globalProperties.$alertManager;
+    const alerts = useState<AlertInstance[]>('alerts', () => []);
 
-    if (!alertManager) throw new Error('AlertManager not mounted.');
+    return (options: AlertProps): Promise<string> => {
+        return new Promise(resolve => {
+            const id = idCounter++;
+            resolvers.set(id, resolve);
+            alerts.value.push({ id, ...options });
+        });
+    }
+}
 
-    return alertManager.showAlert;
+export function resolveAlert(id: number, result: string) {
+    const alerts = useState<AlertInstance[]>('alerts', () => []);
+    alerts.value = alerts.value.filter(a => a.id !== id);
+
+    const resolver = resolvers.get(id);
+    if (resolver) {
+        resolver(result);
+        resolvers.delete(id);
+    }
 }

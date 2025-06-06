@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
-    type: 'info' | 'warning' | 'error';
-    message: string;
-    title: string;
-    actions?: { label: string; value: string }[];
-}>();
+import type { AlertProps } from '~/types';
+
+const props = defineProps<AlertProps>();
 
 const classes = `alert alert-${props.type}`;
 

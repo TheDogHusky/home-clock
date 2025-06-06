@@ -66,5 +66,7 @@ useSeoMeta({
         <NuxtPage />
     </div>
     <Footer />
-    <AlertManager ref="alertManagerRef" />
+    <ClientOnly>
+        <AlertManager ref="alertManagerRef" />
+    </ClientOnly>
 </template>

@@ -213,3 +213,22 @@ export type GetTimerTimeResult = {
     remaining: number; // Remaining time in seconds
     elapsed: number; // Elapsed time in seconds
 }
+
+// Alerts definitions
+
+/**
+ * Props passed to the Alert component.
+ */
+export interface AlertProps {
+    type: 'info' | 'warning' | 'error';
+    message: string;
+    title: string;
+    actions?: { label: string; value: string }[];
+}
+
+/**
+ * AlertOptions extends AlertProps and includes a resolve function for handling the AlertManager logic.
+ */
+export interface AlertInstance extends AlertProps {
+    id: number;
+}
