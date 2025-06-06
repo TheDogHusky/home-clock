@@ -598,7 +598,7 @@ footer {
     border: 1px solid var(--black-400);
 }
 
-/* Modals */
+/* Modals and alerts */
 
 @keyframes fadeIn {
     from {
@@ -618,7 +618,7 @@ footer {
     }
 }
 
-.modal-backdrop {
+.modal-backdrop, .alert-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -632,7 +632,7 @@ footer {
     animation: fadeIn 0.3s ease;
 }
 
-.modal {
+.modal, .alert {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -648,7 +648,7 @@ footer {
     animation: zoomIn 0.3s ease;
 }
 
-.modal-header {
+.modal-header, .alert-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -656,14 +656,14 @@ footer {
     padding: 1rem 1rem 0 1rem;
 }
 
-.modal-close-button {
+.modal-close-button, .alert-close-button {
     position: absolute;
     top: 1rem;
     right: 1rem;
     cursor: pointer;
 }
 
-.modal-content {
+.modal-content, .alert-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -672,11 +672,11 @@ footer {
     font-size: 1.1rem;
 }
 
-.modal-content p {
+.modal-content p, .alert-content p {
     font-size: inherit;
 }
 
-.modal-footer {
+.modal-footer, .alert-footer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -687,13 +687,13 @@ footer {
     font-size: 1rem;
 }
 
-.modal a {
+.modal a, .alert a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 4px;
 }
 
-[data-theme="dark"] .modal {
+[data-theme="dark"] .modal, [data-theme="dark"] .alert {
     background-color: var(--black-700);
     border: 1px solid var(--black-400);
 }

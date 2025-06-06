@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { useSettingsStore } from "~/stores/settings";
 
+
+const alertManagerRef = ref();
+
 const settingsStore = useSettingsStore();
 // Set the body theme based on the settings automatically
 onMounted(() => {
+    const app = useNuxtApp().vueApp;
+    app.config.globalProperties.$alertManager = alertManagerRef.value;
+
     // Freak pinia, their docs talk about using subscriptions, with events and payloads, but it doesn't work (no payloads and events are undefined in prod)
     watch(
         () => settingsStore.theme,
@@ -60,4 +66,5 @@ useSeoMeta({
         <NuxtPage />
     </div>
     <Footer />
+    <AlertManager ref="alertManagerRef" />
 </template>
