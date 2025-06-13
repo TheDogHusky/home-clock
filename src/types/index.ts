@@ -1,5 +1,11 @@
 import type { _GettersTree, Store } from 'pinia';
 
+declare global {
+    interface Window {
+        setSetting: (key: keyof SettingsStoreStates, value: any) => void;
+    }
+}
+
 /**
  * ClockFormats from Luxon, as they do not define all available formats in their types.
  */
@@ -55,11 +61,6 @@ export interface ClockSettings {
      */
     enableCustomLuxonFormat: boolean;
     /**
-     * The color of the clock display.
-     * This can be a CSS color string, such as a hex code or a named color.
-     */
-    color?: string;
-    /**
      * The custom Luxon format string for the clock display.
      * This is used when enableCustomLuxonFormat is true.
      */
@@ -108,6 +109,10 @@ export interface DistractionsSettings {
      * Whether to show the alarms controls when the application is in fullscreen mode.
      */
     showAlarmsControlOnFullscreen: boolean;
+    /**
+     * Whether to show the date alongside the clock.
+     */
+    showDate: boolean;
 }
 
 /**
@@ -138,6 +143,7 @@ export interface SettingsStoreActions {
      * Toggles the current theme between 'dark' and 'light'.
      */
     toggleTheme: () => void;
+    set: <K extends keyof SettingsStoreStates>(key: K, value: SettingsStoreStates[K]) => void;
 }
 
 /**

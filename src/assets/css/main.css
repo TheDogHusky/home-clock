@@ -120,8 +120,7 @@
 
     --text-color: var(--black);
     --background-color: var(--white);
-    --font: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --clock-font: var(--font);
+    --clock-font: ;
     --clock-font-size: 10rem;
     --clock-font-weight: 700;
     --clock-font-style: normal;
@@ -150,7 +149,7 @@ body {
     display: flex;
     min-height: 100dvh;
     width: 100%;
-    font-family: var(--font), sans-serif;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
     margin: 0;
@@ -444,7 +443,7 @@ footer {
     font-weight: var(--clock-font-weight);
     font-style: var(--clock-font-style);
     color: var(--clock-font-color);
-    font-family: var(--clock-font), sans-serif;
+    font-family: var(--clock-font), "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Settings pane */

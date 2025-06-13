@@ -6,11 +6,10 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         theme: 'system',
         clock: {
             format: '24-hour',
-            font: 'Source Code Pro',
-            fontSize: 120,
+            font: 'Source Sans Pro',
+            fontSize: 160,
             fontWeight: 600,
             fontStyle: 'normal',
-            color: '',
             showSeconds: false,
             enableCustomLuxonFormat: false,
             customLuxonFormat: ''
@@ -21,10 +20,10 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         },
         distractions: {
             showClockInTimers: true,
-            showClockInStopwatch: true,
+            showClockInStopwatch: false,
             showClockInAlarms: true,
             showTimersControlOnFullscreen: false,
-            showStopwatchControlOnFullscreen: false,
+            showStopwatchControlOnFullscreen: true,
             showAlarmsControlOnFullscreen: false,
             showDate: false,
         }
@@ -39,6 +38,19 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         },
         toggleTheme() {
             this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        },
+        set<K extends keyof SettingsStoreStates>(key: K, value: SettingsStoreStates[K]) {
+            if (key in this) {
+                // if the key refers to an object, we need to update only the specific property
+                if (typeof this[key] === 'object' && this[key] !== null && typeof value === 'object') {
+                    Object.assign(this[key], value);
+                    return;
+                }
+                // otherwise, we can directly set the value
+                (this as any)[key] = value;
+            } else {
+                console.warn(`Key "${key}" does not exist in settings store.`);
+            }
         }
     },
     getters: {

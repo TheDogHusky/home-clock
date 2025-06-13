@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { formatStopwatchTime } from '~/utils';
+import { useSettingsStore } from "~/stores/settings";
+import { useFullscreen } from '@vueuse/core';
+
+const settingsStore = useSettingsStore();
+const { isFullscreen } = useFullscreen();
 
 const elapsedTime = ref(0);
 let startTime: number | null = null;
@@ -45,8 +50,9 @@ useHead({
 </script>
 
 <template>
+    <Clock v-if="settingsStore.distractions.showClockInStopwatch" />
     <h1 class="stopwatch">{{ formatStopwatchTime(elapsedTime) }}</h1>
-    <div class="stopwatch-controls">
+    <div class="stopwatch-controls" v-if="!isFullscreen || settingsStore.distractions.showStopwatchControlOnFullscreen">
         <button @click="startStopwatch" class="btn btn-icon" v-if="!running">
             <Icon icon="nf-fa-play" />
         </button>

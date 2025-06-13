@@ -4,11 +4,13 @@ import { useFullscreen } from '@vueuse/core';
 import type { Timer } from '~/types';
 import { formatDuration } from "~/utils";
 import { useAlert } from '~/composables/alerts';
+import { useSettingsStore } from "~/stores/settings";
 
 const showAlert = useAlert();
 
 const timersStore = useTimersStore();
 const { isFullscreen } = useFullscreen();
+const settingsStore = useSettingsStore();
 
 // Initialize the values for the new timer modal
 const newTimerActive = ref(false);
@@ -139,7 +141,7 @@ watch(newTimerSecondsDuration, preventNegative(newTimerSecondsDuration));
 </script>
 
 <template>
-    <Clock />
+    <Clock v-if="settingsStore.distractions.showClockInTimers" />
     <ul class="timers">
         <ClientOnly>
             <li v-for="timer in timersStore.timers" :key="timer.id" class="timer">
@@ -147,7 +149,7 @@ watch(newTimerSecondsDuration, preventNegative(newTimerSecondsDuration));
                     <span class="timer-name" v-if="timer.name.length">{{ timer.name }}</span>
                     <span class="timer-time">{{ formatDuration(timersRemaining[timer.id]) }}</span>
                 </div>
-                <div class="timer-controls" v-if="!isFullscreen">
+                <div class="timer-controls" v-if="!isFullscreen || settingsStore.distractions.showTimersControlOnFullscreen">
                     <!-- TODO Add timer controls logic -->
                     <!--<button class="btn btn-icon" @click="">
                         <i class="nf nf-fa-play"></i>
@@ -165,7 +167,7 @@ watch(newTimerSecondsDuration, preventNegative(newTimerSecondsDuration));
             </li>
         </ClientOnly>
     </ul>
-    <div v-if="!isFullscreen">
+    <div v-if="!isFullscreen || settingsStore.distractions.showTimersControlOnFullscreen">
         <button class="btn btn-icon" @click="triggerNewTimer">
             <i class="nf nf-fa-plus"></i>
         </button>

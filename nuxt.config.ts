@@ -11,7 +11,12 @@ export default defineNuxtConfig({
     modules: ['@vueuse/nuxt', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxt/fonts'],
     fonts: {
         families: [
-            { name: 'Source Code Pro', provider: 'google', subsets: ['latin'] },
+            {
+                name: 'Source Code Pro',
+                provider: 'google',
+                subsets: ['latin'],
+                weights: [100, 200, 300, 400, 500,600, 700, 800, 900],
+            },
             {
                 name: 'NerdFontsSymbols Nerd Font',
                 provider: 'local',

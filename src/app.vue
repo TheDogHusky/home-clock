@@ -2,6 +2,9 @@
 import { useSettingsStore } from "~/stores/settings";
 import { useApplyClockSettings } from "~/composables/applyClockSettings";
 import { useApplyThemeSettings } from "~/composables/applyTheme";
+import { useApplyAppearanceSettings } from "~/composables/applyAppearanceSettings";
+import { useApplyDistractionsSettings } from "~/composables/applyDistractionsSettings";
+import type { SettingsStoreStates } from "~/types";
 
 const alertManagerRef = ref();
 
@@ -9,6 +12,8 @@ const settingsStore = useSettingsStore();
 const { theme, clock, appearance, distractions } = storeToRefs(settingsStore);
 useApplyClockSettings(clock);
 useApplyThemeSettings(theme);
+useApplyAppearanceSettings(appearance);
+useApplyDistractionsSettings(distractions);
 
 useHead({
     titleTemplate: (titleChunk) => {
@@ -38,6 +43,12 @@ useSeoMeta({
     ogTitle: "Home-Clock",
     ogDescription: "Home-Clock is a modern, minimalistic, customizable and focus-driven clock app. It is designed to help you focus on your work, with a clean and simple interface, with minimal distraction.",
 });
+
+onMounted(() => {
+    window.setSetting = (key: keyof SettingsStoreStates, value) => {
+        settingsStore.set(key, value);
+    };
+})
 </script>
 
 <template>

@@ -25,8 +25,8 @@ const toggleAboutPane = () => {
         <nav class="menu">
             <ul>
                 <Dropdown />
-                <ClientOnly>
-                    <li class="menu-item" v-if="!isMobile">
+                <ClientOnly v-if="!isMobile">
+                    <li class="menu-item">
                         <IconButton icon="nf-fa-expand" @click="enter" />
                     </li>
                 </ClientOnly>

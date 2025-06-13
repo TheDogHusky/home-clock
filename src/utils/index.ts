@@ -37,7 +37,7 @@ export const getClockFormat = (settings: SettingsStore): ClockFormat => {
     const showSeconds = settings.clock.showSeconds; // Whether to show seconds in the clock
 
     // Determine the ClockFormat based on the settings
-    if (settings.clock.customLuxonFormat) {
+    if (settings.clock.customLuxonFormat && settings.clock.enableCustomLuxonFormat) {
         return settings.clock.customLuxonFormat as ClockFormat;
     }
 
