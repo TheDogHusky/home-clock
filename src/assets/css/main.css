@@ -121,6 +121,11 @@
     --text-color: var(--black);
     --background-color: var(--white);
     --font: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --clock-font: var(--font);
+    --clock-font-size: 10rem;
+    --clock-font-weight: 700;
+    --clock-font-style: normal;
+    --clock-font-color: var(--text-color);
 }
 
 [data-theme="dark"] {
@@ -435,7 +440,11 @@ footer {
 /* Clock */
 
 .clock {
-    font-size: 10rem;
+    font-size: var(--clock-font-size);
+    font-weight: var(--clock-font-weight);
+    font-style: var(--clock-font-style);
+    color: var(--clock-font-color);
+    font-family: var(--clock-font), sans-serif;
 }
 
 /* Settings pane */

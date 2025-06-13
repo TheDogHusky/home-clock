@@ -21,6 +21,96 @@ export type Theme = 'dark' | 'light' | 'system' | string;
 // SettingsStore definitions
 
 /**
+ * Settings related to the clock display.
+ */
+export interface ClockSettings {
+    /**
+     * The format of the clock display.
+     * Can be '12-hour', '24-hour', or a custom Luxon format defined in the customLuxonFormat setting.
+     */
+    format: ClockFormat;
+    /**
+     * The font used for the clock display.
+     */
+    font: string;
+    /**
+     * The font size for the clock display.
+     */
+    fontSize: number;
+    /**
+     * The font weight for the clock display.
+     */
+    fontWeight: number;
+    /**
+     * The font style for the clock display.
+     * Can be 'normal' or 'italic'.
+     */
+    fontStyle: 'normal' | 'italic';
+    /**
+     * Whether to show seconds in the clock display.
+     */
+    showSeconds: boolean;
+    /**
+     * Whether to enable a custom Luxon format for the clock display.
+     */
+    enableCustomLuxonFormat: boolean;
+    /**
+     * The color of the clock display.
+     * This can be a CSS color string, such as a hex code or a named color.
+     */
+    color?: string;
+    /**
+     * The custom Luxon format string for the clock display.
+     * This is used when enableCustomLuxonFormat is true.
+     */
+    customLuxonFormat: ClockFormat;
+}
+
+/**
+ * Settings related to the appearance of the application.
+ */
+export interface AppearanceSettings {
+    /**
+     * The background color of the application.
+     */
+    backgroundColor: string;
+    /**
+     * The font color for the clock display.
+     */
+    clockFontColor: string;
+}
+
+/**
+ * Settings related to distractions and controls in the application.
+ */
+export interface DistractionsSettings {
+    /**
+     * Whether to show the clock in the timers page.
+     */
+    showClockInTimers: boolean;
+    /**
+     * Whether to show the clock in the stopwatch page.
+     */
+    showClockInStopwatch: boolean;
+    /**
+     * Whether to show the clock in the alarms page.
+     */
+    showClockInAlarms: boolean;
+    /**
+     * Whether to show the timer controls when the application is in fullscreen mode.
+     */
+    showTimersControlOnFullscreen: boolean;
+    /**
+     * Whether to show the stopwatch controls when the application is in fullscreen mode.
+     */
+    showStopwatchControlOnFullscreen: boolean;
+    /**
+     * Whether to show the alarms controls when the application is in fullscreen mode.
+     */
+    showAlarmsControlOnFullscreen: boolean;
+}
+
+/**
  * SettingsStoreStates defines the structure of the settings state in the application following Pinia.
  */
 export interface SettingsStoreStates {
@@ -28,88 +118,9 @@ export interface SettingsStoreStates {
      * The current theme of the application.
      */
     theme: Theme;
-    /**
-     * Settings related to the clock display.
-     */
-    clock: {
-        /**
-         * The format of the clock display.
-         * Can be '12-hour', '24-hour', or a custom Luxon format defined in the customLuxonFormat setting.
-         */
-        format: ClockFormat;
-        /**
-         * The font used for the clock display.
-         */
-        font: string;
-        /**
-         * The font size for the clock display.
-         */
-        fontSize: number;
-        /**
-         * The font weight for the clock display.
-         */
-        fontWeight: number;
-        /**
-         * The font style for the clock display.
-         * Can be 'normal' or 'italic'.
-         */
-        fontStyle: 'normal' | 'italic';
-        /**
-         * Whether to show seconds in the clock display.
-         */
-        showSeconds: boolean;
-        /**
-         * Whether to enable a custom Luxon format for the clock display.
-         */
-        enableCustomLuxonFormat: boolean;
-        /**
-         * The custom Luxon format string for the clock display.
-         * This is used when enableCustomLuxonFormat is true.
-         */
-        customLuxonFormat: ClockFormat;
-    };
-    /**
-     * Settings related to the appearance of the application.
-     */
-    appearance: {
-        /**
-         * The background color of the application.
-         */
-        backgroundColor: string;
-        /**
-         * The font color for the clock display.
-         */
-        clockFontColor: string;
-    };
-    /**
-     * Settings related to distractions and controls in the application.
-     */
-    distractions: {
-        /**
-         * Whether to show the clock in the timers page.
-         */
-        showClockInTimers: boolean;
-        /**
-         * Whether to show the clock in the stopwatch page.
-         */
-        showClockInStopwatch: boolean;
-        /**
-         * Whether to show the clock in the alarms page.
-         */
-        showClockInAlarms: boolean;
-        /**
-         * Whether to show the timer controls when the application is in fullscreen mode.
-         */
-        showTimersControlOnFullscreen: boolean;
-        /**
-         * Whether to show the stopwatch controls when the application is in fullscreen mode.
-         */
-        showStopwatchControlOnFullscreen: boolean;
-        /**
-         * Whether to show the alarms controls when the application is in fullscreen mode.
-         */
-        showAlarmsControlOnFullscreen: boolean;
-    };
+    clock: ClockSettings;
+    appearance: AppearanceSettings
+    distractions: DistractionsSettings
 }
 
 export type SettingsStore =  Store<"settings", SettingsStoreStates, SettingsStoreGetters, SettingsStoreActions>;

@@ -7,9 +7,10 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         clock: {
             format: '24-hour',
             font: 'Source Code Pro',
-            fontSize: 85,
+            fontSize: 120,
             fontWeight: 600,
             fontStyle: 'normal',
+            color: '',
             showSeconds: false,
             enableCustomLuxonFormat: false,
             customLuxonFormat: ''
