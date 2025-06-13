@@ -249,3 +249,8 @@ export interface AlertProps {
 export interface AlertInstance extends AlertProps {
     id: number;
 }
+
+// Other types
+export interface SettingsPaneContentComponentProps {
+    currentCategory: string;
+}

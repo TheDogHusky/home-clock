@@ -2,7 +2,6 @@ import type { AppearanceSettings } from "~/types";
 
 export const useApplyAppearanceSettings = (appearance: Ref<AppearanceSettings>) => {
     const applySettings = () => {
-        console.log("Applying appearance settings:", appearance.value);
         const el = document.body;
         if (!el) return;
 
