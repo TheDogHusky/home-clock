@@ -21,13 +21,6 @@ const classes = computed(() => {
     };
 });
 
-const settingsPaneActiveLinkClasses = (category: string) => computed(() => {
-    return {
-        'settings-pane-link': true,
-        'active': currentCategory.value === category
-    };
-});
-
 const settingsPaneTitle = computed(() => {
     switch (currentCategory.value) {
         case 'general':
