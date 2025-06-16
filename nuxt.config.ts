@@ -8,7 +8,13 @@ export default defineNuxtConfig({
         '~/assets/css/main.css',
         '~/assets/css/nerdfonts.css'
     ],
-    modules: ['@vueuse/nuxt', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxt/fonts'],
+    modules: [
+        '@vueuse/nuxt',
+        '@pinia/nuxt',
+        'pinia-plugin-persistedstate/nuxt',
+        '@nuxt/fonts',
+        'floating-vue/nuxt'
+    ],
     fonts: {
         families: [
             {

@@ -39,7 +39,7 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         toggleTheme() {
             this.theme = this.theme === 'dark' ? 'light' : 'dark';
         },
-        set<K extends keyof SettingsStoreStates>(key: K, value: SettingsStoreStates[K]) {
+        set<K extends keyof SettingsStoreStates | string>(key: K, value: SettingsStoreStates[K]) {
             if (key in this) {
                 // if the key refers to an object, we need to update only the specific property
                 if (typeof this[key] === 'object' && this[key] !== null && typeof value === 'object') {

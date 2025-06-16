@@ -2,6 +2,9 @@
 import type { SettingsPaneContentComponentProps } from "~/types";
 
 const props = defineProps<SettingsPaneContentComponentProps>();
+const emits = defineEmits<{
+    (e: 'valueUpdate', key: string, value: any): void;
+}>();
 </script>
 
 <template>

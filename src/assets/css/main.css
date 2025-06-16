@@ -371,6 +371,24 @@ header {
     --btn-hover-border: 1px solid var(--primary);
 }
 
+[data-theme="dark"] .btn-light {
+    --btn-bg: transparent;
+    --btn-color: var(--white-fixed);
+    --btn-hover-bg: var(--white-fixed);
+    --btn-hover-color: var(--black-fixed);
+    --btn-border: 1px solid var(--white-fixed);
+    --btn-hover-border: 1px solid var(--white-fixed);
+}
+
+.btn-light {
+    --btn-bg: transparent;
+    --btn-color: var(--black-fixed);
+    --btn-hover-bg: var(--black-fixed);
+    --btn-hover-color: var(--white-fixed);
+    --btn-border: 1px solid var(--black-fixed);
+    --btn-hover-border: 1px solid var(--black-fixed);
+}
+
 [data-theme="dark"] .btn-secondary, .btn-secondary {
     --btn-bg: transparent;
     --btn-color: var(--secondary);
@@ -479,6 +497,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: 100%;
 }
 
 .settings-pane-sidebar {
@@ -533,6 +552,14 @@ footer {
 
 [data-theme="dark"] .settings-pane-sidebar {
     background-color: var(--black-600);
+}
+
+.settings-pane-category-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    height: 100%;
 }
 
 /* About pane */
@@ -716,13 +743,12 @@ form {
 
 form label {
     font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
 form input, form select, form textarea {
     width: 100%;
     padding: 0.5rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     background-color: var(--white-fixed);
     border: 1px solid var(--black-400);
     color: var(--black-fixed);
@@ -730,7 +756,9 @@ form input, form select, form textarea {
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-[data-theme="dark"] form input, form select, form textarea {
+[data-theme="dark"] form input,
+[data-theme="dark"] form select,
+[data-theme="dark"] form textarea {
     border: 1px solid var(--white-100);
     background-color: transparent;
     color: var(--white-fixed);
@@ -779,6 +807,29 @@ form input[type="checkbox"] + label, form input[type="radio"] + label {
 .timer-duration span:not(:first-child):before {
     content: ":";
     margin-right: .5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.form-group-item .btn {
+    padding: .75rem;
+}
+
+input[type="color"] {
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 /* Timers */
@@ -945,4 +996,24 @@ form input[type="checkbox"] + label, form input[type="radio"] + label {
         width: 100%;
         text-align: center;
     }
+}
+
+/* Tooltips */
+
+.v-popper--theme-tooltip .v-popper__inner {
+    border-radius: 0.5rem !important;
+    background-color: var(--background-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    font-size: .875rem !important;
+    font-weight: 400 !important;
+    color: var(--black-600) !important;
+    max-width: 300px !important;
+}
+
+[data-theme="dark"] .v-popper--theme-tooltip .v-popper__inner {
+    color: var(--black-100) !important;
+}
+
+.v-popper--theme-tooltip .v-popper__arrow-outer {
+    border-color: var(--background-color) !important;
 }

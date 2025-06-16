@@ -3,7 +3,7 @@ const props = defineProps<{
     icon: string;
     label?: string;
     to?: string;
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success' | 'warning' | 'info';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'success' | 'warning' | 'info' | 'light';
 }>();
 
 const classes = computed(() => {

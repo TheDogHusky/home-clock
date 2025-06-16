@@ -126,6 +126,8 @@ export interface SettingsStoreStates {
     clock: ClockSettings;
     appearance: AppearanceSettings
     distractions: DistractionsSettings
+
+    [key: string]: any;
 }
 
 export type SettingsStore =  Store<"settings", SettingsStoreStates, SettingsStoreGetters, SettingsStoreActions>;

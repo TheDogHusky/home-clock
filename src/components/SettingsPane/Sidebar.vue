@@ -4,12 +4,10 @@ import type { SettingsPaneContentComponentProps } from "~/types";
 const props = defineProps<SettingsPaneContentComponentProps>();
 const route = useRoute();
 
-const currentCategory = ref(props.currentCategory);
-
 const settingsPaneActiveLinkClasses = (category: string) => computed(() => {
     return {
         'settings-pane-link': true,
-        'active': currentCategory.value === category
+        'active': props.currentCategory === category
     };
 });
 </script>
