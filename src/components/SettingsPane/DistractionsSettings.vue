@@ -2,9 +2,9 @@
 import type { SettingsPaneContentComponentProps } from "~/types";
 import { useSettingsStore } from "~/stores/settings";
 
-const props = defineProps<SettingsPaneContentComponentProps>();
+defineProps<SettingsPaneContentComponentProps>();
 const settingsStore = useSettingsStore();
-const emits = defineEmits<{
+defineEmits<{
     (e: 'valueUpdate', key: string, value: any): void;
 }>();
 
@@ -87,7 +87,7 @@ watch(settingsStore.distractions, (newSettings) => {
             <label for="show-timers-controls-on-fullscreen">Show Timers Controls on Fullscreen</label>
             <div class="form-group-item">
                 <label class="switch">
-                    <input type="checkbox" id="show-timers-controls-on-fullscreen" v-model="showTimersControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showTimersControlOnFullscreen })">
+                    <input type="checkbox" id="show-timers-controls-on-fullscreen" v-model="showTimersControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showTimersControlOnFullscreen: showTimersControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
                 <VTooltip aria-id="show-timers-controls-on-fullscreen-tooltip" placement="bottom">
@@ -105,7 +105,7 @@ watch(settingsStore.distractions, (newSettings) => {
             <label for="show-stopwatch-controls-on-fullscreen">Show Stopwatch Controls on Fullscreen</label>
             <div class="form-group-item">
                 <label class="switch">
-                    <input type="checkbox" id="show-stopwatch-controls-on-fullscreen" v-model="showStopwatchControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showStopwatchControlOnFullscreen })">
+                    <input type="checkbox" id="show-stopwatch-controls-on-fullscreen" v-model="showStopwatchControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showStopwatchControlOnFullscreen: showStopwatchControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
                 <VTooltip aria-id="show-stopwatch-controls-on-fullscreen-tooltip" placement="bottom">
@@ -123,7 +123,7 @@ watch(settingsStore.distractions, (newSettings) => {
             <label for="show-alarms-controls-on-fullscreen">Show Alarms Controls on Fullscreen</label>
             <div class="form-group-item">
                 <label class="switch">
-                    <input type="checkbox" id="show-alarms-controls-on-fullscreen" v-model="showAlarmsControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showAlarmsControlOnFullscreen })">
+                    <input type="checkbox" id="show-alarms-controls-on-fullscreen" v-model="showAlarmsControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showAlarmsControlOnFullscreen: showAlarmsControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
                 <VTooltip aria-id="show-alarms-controls-on-fullscreen-tooltip" placement="bottom">
