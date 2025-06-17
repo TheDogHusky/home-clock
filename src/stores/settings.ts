@@ -6,9 +6,9 @@ export const useSettingsStore = defineStore<"settings", SettingsStoreStates, Set
         theme: 'system',
         clock: {
             format: '24-hour',
-            font: 'Source Sans Pro',
+            font: 'default',
             fontSize: 160,
-            fontWeight: 600,
+            fontWeight: 'bold',
             fontStyle: 'normal',
             showSeconds: false,
             enableCustomLuxonFormat: false,

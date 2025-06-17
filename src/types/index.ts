@@ -46,7 +46,7 @@ export interface ClockSettings {
     /**
      * The font weight for the clock display.
      */
-    fontWeight: number;
+    fontWeight: string;
     /**
      * The font style for the clock display.
      * Can be 'normal' or 'italic'.

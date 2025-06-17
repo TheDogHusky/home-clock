@@ -10,6 +10,11 @@ const emits = defineEmits<{
 
 const backgroundColorInput = ref(settingsStore.backgroundColor);
 const clockFontColorInput = ref(settingsStore.clockFontColor);
+
+watch(settingsStore.appearance, (newSettings) => {
+    backgroundColorInput.value = newSettings.backgroundColor;
+    clockFontColorInput.value = newSettings.clockFontColor;
+});
 </script>
 
 <template>
@@ -18,7 +23,7 @@ const clockFontColorInput = ref(settingsStore.clockFontColor);
             <label for="theme">Background Color</label>
             <div class="form-group-item">
                 <input type="color" id="theme" v-model="backgroundColorInput" @change="$emit('valueUpdate', 'appearance', { backgroundColor: backgroundColorInput })">
-                <VTooltip placement="bottom">
+                <VTooltip aria-id="background-color-tooltip" placement="bottom">
                     <IconButton
                         icon="nf-fa-info"
                         variant="light"
@@ -33,7 +38,7 @@ const clockFontColorInput = ref(settingsStore.clockFontColor);
             <label for="theme">Clock Font Color</label>
             <div class="form-group-item">
                 <input type="color" id="theme" v-model="clockFontColorInput" @change="$emit('valueUpdate', 'appearance', { clockFontColor: clockFontColorInput })">
-                <VTooltip placement="bottom">
+                <VTooltip aria-id="clock-font-color-tooltip" placement="bottom">
                     <IconButton
                         icon="nf-fa-info"
                         variant="light"

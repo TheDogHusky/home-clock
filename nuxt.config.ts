@@ -21,13 +21,31 @@ export default defineNuxtConfig({
                 name: 'Source Code Pro',
                 provider: 'google',
                 subsets: ['latin'],
-                weights: [100, 200, 300, 400, 500,600, 700, 800, 900],
+                weights: [100, 200, 300, 400, 500,600, 700, 800, 900]
             },
             {
                 name: 'NerdFontsSymbols Nerd Font',
                 provider: 'local',
                 preload: true,
                 styles: ['normal']
+            },
+            {
+                name: 'Source Sans Pro',
+                provider: 'google',
+                subsets: ['latin'],
+                weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+            },
+            {
+                name: 'Roboto Mono',
+                provider: 'google',
+                subsets: ['latin'],
+                weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+            },
+            {
+                name: 'Roboto',
+                provider: 'google',
+                subsets: ['latin'],
+                weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
             }
         ]
     },

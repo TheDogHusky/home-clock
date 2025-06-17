@@ -62,7 +62,7 @@ export const formatDate = (date: DateTime, settings: SettingsStore): string => {
     const formatOptions = getFormatOptions(clockFormat);
 
     // Use Luxon's toLocaleString method to format the date
-    return date.toLocaleString(formatOptions);
+    return date.toLocaleString(formatOptions, { locale: 'en-US' });
 };
 
 /**

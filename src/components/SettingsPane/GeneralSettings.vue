@@ -29,7 +29,7 @@ function resetSettings() {
                     <option value="dark">Dark</option>
                     <option value="system">System</option>
                 </select>
-                <VTooltip placement="bottom">
+                <VTooltip aria-id="theme-tooltip" placement="bottom">
                     <IconButton
                         icon="nf-fa-info"
                         variant="light"
