@@ -108,3 +108,26 @@ export const getTimerTime = (startTime: number, duration: number): { remaining: 
         elapsed
     };
 };
+
+/**
+ * Formats the clock font based on the provided font string.
+ * Makes sure to return a 'Font Name' format for custom fonts, and a standard font name for common fonts.
+ * @param font - The font string to format.
+ * @return A formatted font string suitable for CSS usage.
+ */
+export const formatClockFont = (font: string): string => {
+    switch(font) {
+        case 'monospace':
+            return 'monospace';
+        case 'sans-serif':
+            return 'sans-serif';
+        case 'serif':
+            return 'serif';
+        case 'Courier New':
+            return 'Courier New';
+        case 'Arial':
+            return 'Arial';
+        default:
+            return '"' + font + '"'
+    }
+}
