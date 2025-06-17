@@ -149,7 +149,7 @@ body {
     display: flex;
     min-height: 100dvh;
     width: 100%;
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
     margin: 0;
@@ -461,7 +461,7 @@ footer {
     font-weight: var(--clock-font-weight);
     font-style: var(--clock-font-style);
     color: var(--clock-font-color);
-    font-family: var(--clock-font), "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--clock-font), "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Settings pane */
