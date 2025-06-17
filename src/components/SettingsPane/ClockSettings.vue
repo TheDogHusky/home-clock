@@ -115,7 +115,7 @@ function handleFormatChange(event: Event) {
                     <option value="sans-serif">Sans-serif</option>
                     <option value="serif">Serif</option>
                     <option value="Source Code Pro">Source Code Pro</option>
-                    <option value="Source Sans Pro">Source Sans Pro</option>
+                    <option value="Source Sans 3">Source Sans 3</option>
                     <option value="Roboto">Roboto</option>
                     <option value="Courier New">Courier New</option>
                     <option value="Arial">Arial</option>

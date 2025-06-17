@@ -30,7 +30,7 @@ export default defineNuxtConfig({
                 styles: ['normal']
             },
             {
-                name: 'Source Sans Pro',
+                name: 'Source Sans 3',
                 provider: 'google',
                 subsets: ['latin'],
                 weights: [100, 200, 300, 400, 500, 600, 700, 800, 900]
