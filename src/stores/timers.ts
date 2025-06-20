@@ -34,7 +34,7 @@ export const useTimersStore = defineStore<'timers', TimerStoreStates, TimerStore
             if (timer) {
                 return {
                     ...timer,
-                    ...getTimerTime(timer.startTime, timer.duration)
+                    ...getTimerTime(timer)
                 };
             }
             return null;
@@ -44,6 +44,24 @@ export const useTimersStore = defineStore<'timers', TimerStoreStates, TimerStore
             if (timer) {
                 timer.startTime = Date.now();
                 timer.isActive = true;
+            }
+        },
+        pauseTimer(id: string) {
+            const timer = this.timers.find(timer => timer.id === id);
+            if (timer && timer.isActive) {
+                timer.isActive = false;
+                timer.stopTime = Date.now();
+            }
+        },
+        resumeTimer(id: string) {
+            const timer = this.timers.find(timer => timer.id === id);
+            if (timer) {
+                timer.isActive = true;
+                if (timer.stopTime) {
+                    timer.startTime += Date.now() - timer.stopTime;
+                } else {
+                    timer.startTime = Date.now();
+                }
             }
         }
     },

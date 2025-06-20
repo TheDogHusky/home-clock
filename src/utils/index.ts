@@ -1,4 +1,4 @@
-import type { ClockFormat } from '~/types';
+import type { ClockFormat, Timer } from '~/types';
 import { DateTime } from 'luxon';
 import type { SettingsStore } from '~/types';
 
@@ -97,14 +97,23 @@ export const formatStopwatchTime = (time: number): string => {
 
 /**
  * Calculates the remaining time and elapsed time for a timer based on its start time and duration.
- * @param startTime - The timestamp when the timer started (in milliseconds).
- * @param duration - The total duration of the timer (in seconds).
+ * @param timer - The timer object containing the start time and duration.
  * @return An object containing the remaining time and elapsed time in seconds.
  */
-export const getTimerTime = (startTime: number, duration: number): { remaining: number; elapsed: number } => {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+export const getTimerTime = (timer: Timer): { remaining: number; elapsed: number } => {
+    const elapsed = Math.floor((Date.now() - timer.startTime) / 1000);
+    const stopTime = timer.stopTime ? Math.floor((timer.stopTime - timer.startTime) / 1000) : null;
+
+    if (!timer.isActive) {
+        // If the timer is not active, return the elapsed time and remaining time based on stopTime
+        return {
+            remaining: stopTime !== null ? Math.max(0, timer.duration - stopTime) : timer.duration,
+            elapsed: stopTime !== null ? stopTime : elapsed
+        };
+    }
+
     return {
-        remaining: Math.max(0, duration - elapsed),
+        remaining: Math.max(0, timer.duration - elapsed),
         elapsed
     };
 };

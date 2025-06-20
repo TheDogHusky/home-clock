@@ -175,6 +175,7 @@ export interface Timer {
     duration: number; // in seconds
     startTime: number; // timestamp when the timer started
     isActive: boolean; // whether the timer is currently running
+    stopTime?: number; // optional timestamp when the timer was stopped
 }
 
 /**
@@ -219,6 +220,16 @@ export interface TimerStoreActions {
      * @param id - The ID of the timer to reset.
      */
     resetTimer: (id: string) => void;
+    /**
+     * Pauses a timer by its ID, marking it as inactive.
+     * @param id - The ID of the timer to pause.
+     */
+    pauseTimer: (id: string) => void;
+    /**
+     * Resumes a paused timer by its ID, marking it as active.
+     * @param id - The ID of the timer to resume.
+     */
+    resumeTimer: (id: string) => void;
 }
 
 /**

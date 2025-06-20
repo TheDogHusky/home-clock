@@ -150,13 +150,12 @@ watch(newTimerSecondsDuration, preventNegative(newTimerSecondsDuration));
                     <span class="timer-time">{{ formatDuration(timersRemaining[timer.id]) }}</span>
                 </div>
                 <div class="timer-controls" v-if="!isFullscreen || settingsStore.distractions.showTimersControlOnFullscreen">
-                    <!-- TODO Add timer controls logic -->
-                    <!--<button class="btn btn-icon" @click="">
+                    <button class="btn btn-icon" @click="timersStore.resumeTimer(timer.id)">
                         <i class="nf nf-fa-play"></i>
                     </button>
-                    <button class="btn btn-icon" @click="">
+                    <button class="btn btn-icon" @click="timersStore.pauseTimer(timer.id)">
                         <i class="nf nf-fa-pause"></i>
-                    </button>-->
+                    </button>
                     <button class="btn btn-icon" @click="timersStore.resetTimer(timer.id)">
                         <i class="nf nf-fa-undo"></i>
                     </button>
