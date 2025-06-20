@@ -161,7 +161,7 @@ async function triggerAlert(timer: Timer) {
 
     await showAlert({
         title: 'Timer Finished',
-        message: `The timer "${timer.name}" has finished!`,
+        message: timer.name.length > 0 ? `The timer "${timer.name}" has finished!` : 'Your timer has finished!',
         type: 'info'
     });
 
