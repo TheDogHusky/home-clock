@@ -176,6 +176,7 @@ export interface Timer {
     startTime: number; // timestamp when the timer started
     isActive: boolean; // whether the timer is currently running
     stopTime?: number; // optional timestamp when the timer was stopped
+    sound?: string; // optional sound to play when the timer ends
 }
 
 /**
@@ -197,7 +198,7 @@ export interface TimerStoreActions {
      * @param name - The name of the timer.
      * @param duration - The duration of the timer in seconds.
      */
-    addTimer: (name: string, duration: number) => void;
+    addTimer: (name: string, duration: number, sound?: string) => Timer;
     /**
      * Removes a timer by its ID.
      * @param id - The ID of the timer to remove.

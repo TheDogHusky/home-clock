@@ -180,9 +180,10 @@ p {
     font-size: 1rem;
 }
 
-a {
+a, .credits-button {
     color: var(--primary);
     text-decoration: none;
+    cursor: pointer;
 }
 
 ul {
@@ -191,6 +192,10 @@ ul {
 }
 
 /* Utilities */
+
+.w-fit-content {
+    width: fit-content;
+}
 
 /* Navigation */
 
@@ -441,6 +446,16 @@ header {
     --btn-hover-color: var(--black-fixed);
     --btn-border: 1px solid var(--info);
     --btn-hover-border: 1px solid var(--info);
+}
+
+button.credits-button {
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    width: fit-content;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 /* Footer */

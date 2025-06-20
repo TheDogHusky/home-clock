@@ -7,15 +7,18 @@ export const useTimersStore = defineStore<'timers', TimerStoreStates, TimerStore
         timers: []
     }),
     actions: {
-        addTimer(name: string, duration: number) {
+        addTimer(name: string, duration: number, sound: string = 'clock') {
             const newTimer = {
                 id: crypto.randomUUID(),
                 name,
                 duration,
                 startTime: Date.now(),
-                isActive: true
+                isActive: true,
+                sound
             };
             this.timers.push(newTimer);
+
+            return newTimer;
         },
         removeTimer(id: string) {
             this.timers = this.timers.filter(timer => timer.id !== id);
