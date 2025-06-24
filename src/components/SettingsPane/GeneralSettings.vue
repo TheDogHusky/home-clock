@@ -22,22 +22,21 @@ function resetSettings() {
 <template>
     <form class="settings-pane-content-form" @submit.prevent>
         <div class="form-group">
-            <label for="theme">Theme</label>
+            <label for="theme" class="setting-name">
+                <span>Theme</span>
+                <VTooltip class="info-icon" aria-id="theme-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will change the overall theme of the application. The "System" option will follow your system's theme settings.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <select id="theme" v-model="themeInput" @change="$emit('valueUpdate', 'theme', themeInput)">
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
                     <option value="system">System</option>
                 </select>
-                <VTooltip aria-id="theme-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will change the overall theme of the application. The "System" option will follow your system's theme settings.
-                    </template>
-                </VTooltip>
             </div>
         </div>
     </form>

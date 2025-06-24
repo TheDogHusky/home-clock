@@ -30,129 +30,122 @@ watch(settingsStore.distractions, (newSettings) => {
 <template>
     <form class="settings-pane-content-form">
         <div class="form-group">
-            <label for="show-clock-in-timers">Show Clock in Timers</label>
+            <label for="show-clock-in-timers" class="setting-name">
+                <span>Show Clock in Timers</span>
+                <VTooltip class="info-icon" aria-id="show-clock-in-timers-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the clock in the Timers page.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-clock-in-timers" v-model="showClockInTimers" @change="$emit('valueUpdate', 'distractions', { showClockInTimers })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-clock-in-timers-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the clock in the Timers page.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-clock-in-stopwatch">Show Clock in Stopwatch</label>
+            <label for="show-clock-in-stopwatch" class="setting-name">
+                <span>Show Clock in Stopwatch</span>
+                <VTooltip class="info-icon" aria-id="show-clock-in-stopwatch-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the clock in the Stopwatch page.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-clock-in-stopwatch" v-model="showClockInStopwatch" @change="$emit('valueUpdate', 'distractions', { showClockInStopwatch })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-clock-in-stopwatch-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the clock in the Stopwatch page.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-clock-in-alarms">Show Clock in Alarms</label>
+            <label for="show-clock-in-alarms" class="setting-name">
+                <span>Show Clock in Alarms</span>
+                <VTooltip class="info-icon" aria-id="show-clock-in-alarms-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the clock in the Alarms page.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-clock-in-alarms" v-model="showClockInAlarms" @change="$emit('valueUpdate', 'distractions', { showClockInAlarms })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-clock-in-alarms-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the clock in the Alarms page.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-timers-controls-on-fullscreen">Show Timers Controls on Fullscreen</label>
+            <label for="show-timers-controls-on-fullscreen" class="setting-name">
+                <span>Show Timers Controls on Fullscreen</span>
+                <VTooltip class="info-icon" aria-id="show-timers-controls-on-fullscreen-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the controls of the timers when in fullscreen mode.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-timers-controls-on-fullscreen" v-model="showTimersControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showTimersControlOnFullscreen: showTimersControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-timers-controls-on-fullscreen-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the controls of the timers when in fullscreen mode.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-stopwatch-controls-on-fullscreen">Show Stopwatch Controls on Fullscreen</label>
+            <label for="show-stopwatch-controls-on-fullscreen" class="setting-name">
+                <span>Show Stopwatch Controls on Fullscreen</span>
+                <VTooltip class="info-icon" aria-id="show-stopwatch-controls-on-fullscreen-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the controls of the stopwatch when in fullscreen mode.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-stopwatch-controls-on-fullscreen" v-model="showStopwatchControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showStopwatchControlOnFullscreen: showStopwatchControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-stopwatch-controls-on-fullscreen-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the controls of the stopwatch when in fullscreen mode.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-alarms-controls-on-fullscreen">Show Alarms Controls on Fullscreen</label>
+            <label for="show-alarms-controls-on-fullscreen" class="setting-name">
+                <span>Show Alarms Controls on Fullscreen</span>
+                <VTooltip class="info-icon" aria-id="show-alarms-controls-on-fullscreen-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the controls of the alarms when in fullscreen mode.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-alarms-controls-on-fullscreen" v-model="showAlarmsControlsOnFullscreen" @change="$emit('valueUpdate', 'distractions', { showAlarmsControlOnFullscreen: showAlarmsControlsOnFullscreen })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-alarms-controls-on-fullscreen-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the controls of the alarms when in fullscreen mode.
-                    </template>
-                </VTooltip>
             </div>
         </div>
         <div class="form-group">
-            <label for="show-date">Show Date</label>
+            <label for="show-date" class="setting-name">
+                <span>Show Date</span>
+                <VTooltip class="info-icon" aria-id="show-date-tooltip" placement="bottom">
+                    <Icon icon="nf-fa-info"/>
+                    <template #popper>
+                        Will show the current date in the application alongside the clock.
+                    </template>
+                </VTooltip>
+            </label>
             <div class="form-group-item">
                 <label class="switch">
                     <input type="checkbox" id="show-date" v-model="showDate" @change="$emit('valueUpdate', 'distractions', { showDate })">
                     <span class="slider"></span>
                 </label>
-                <VTooltip aria-id="show-date-tooltip" placement="bottom">
-                    <IconButton
-                        icon="nf-fa-info"
-                        variant="light"
-                    />
-                    <template #popper>
-                        Will show the current date in the application alongside the clock.
-                    </template>
-                </VTooltip>
             </div>
         </div>
     </form>
