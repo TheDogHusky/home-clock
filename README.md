@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/ff73e763-f614-40b6-b925-4200abd410ff)
+![image](https://github.com/user-attachments/assets/8943e8a9-6eb3-4f05-8e26-58850abeba1b)
 # Home Clock
 
 Home Clock is a simple, customizable and minimalistic clock web application built with Nuxt 3.
