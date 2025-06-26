@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/8943e8a9-6eb3-4f05-8e26-58850abeba1b)
 # Home Clock
 
 Home Clock is a simple, customizable and minimalistic clock web application built with Nuxt 3.
@@ -7,9 +8,11 @@ It can:
 - Display the current time in various formats.
 - Display a countdown timer.
 - Display a stopwatch.
-- Schedule alarms.
+- *Schedule alarms. (soon)*
 
 Yes, it is overengineered for a clock app, but it is built with the intention of being fully customizable.
+
+Check out the [demo](https://clock.classydev.fr).
 
 ## Why?
 
@@ -32,3 +35,7 @@ Start the development server on `http://localhost:3000`:
 ```bash
 yarn dev
 ```
+
+## Deploying your own instance
+
+SImply clone the repository, run `yarn build` and `node .output/server/index.mjs`. Don't forget the `NITRO_PORT` env variable!
